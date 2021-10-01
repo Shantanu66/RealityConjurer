@@ -3,6 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
 
+final Shader linearGradient = LinearGradient(
+	colors: <Color>[Colors.pink, Colors.green],
+).createShader(
+	Rect.fromLTWH(0.0, 0.0, 200.0, 70.0),
+);
+
 
 class MySplash extends StatefulWidget {
   
@@ -10,6 +16,8 @@ class MySplash extends StatefulWidget {
   _MySplashState createState() => _MySplashState();
 }
 
+
+class _MySplashState extends State<MySplash> {
   @override
   Widget build(BuildContext context) {
     return SplashScreen(
