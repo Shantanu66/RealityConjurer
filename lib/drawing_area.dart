@@ -10,9 +10,9 @@ class DrawingArea{
 }
 
 class MyCustomPainter extends CustomPainter{
-  List<DrawingArea> points;
+  List<DrawingArea?> points;
   
-  MyCustomPainter({required List<DrawingArea> points}):
+  MyCustomPainter({required List<DrawingArea?> points}):
   this.points=points.toList();
   
   @override
@@ -24,11 +24,11 @@ class MyCustomPainter extends CustomPainter{
 
      for(int x=0;x<points.length-1;x++){
        if(points[x]!=null && points[x+1]!=null){
-         canvas.drawLine((points[x].point), points[x+1].point, 
-         points[x].areaPaint);
+         canvas.drawLine((points[x]!.point), points[x+1]!.point, 
+         points[x]!.areaPaint);
        }else if(points[x]!=null && points[x+1]==null){
-         canvas.drawPoints(PointMode.points, [points[x].point], 
-         points[x].areaPaint);
+         canvas.drawPoints(PointMode.points, [points[x]!.point], 
+         points[x]!.areaPaint);
        }
      }
   }
