@@ -1,5 +1,6 @@
+import 'dart:async';
 import 'dart:ffi';
-
+import 'package:rounded_loading_button/rounded_loading_button.dart';
 import 'package:flutter/material.dart';
 import 'package:reality_conjurer/drawing_area.dart';
 
@@ -10,6 +11,18 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   List<DrawingArea?> points = [];
+  void _doSomething() async {
+    Timer(Duration(milliseconds: 100), () {
+      this.setState(() {
+        points.clear();
+        _btnController.success();
+        _btnController.reset();
+      });
+    });
+  }
+
+  final RoundedLoadingButtonController _btnController =
+      new RoundedLoadingButtonController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,7 +107,25 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                   ),
-                )
+                ),
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      RoundedLoadingButton(
+                        child: Text('Clear Pad',
+                        style: TextStyle(color: Colors.white,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14)),
+                        elevation: 15.0,
+                        controller: _btnController,
+                        color: Colors.deepPurpleAccent,
+                        onPressed: _doSomething,
+                        width: 200,
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           )
