@@ -29,7 +29,7 @@ class _HomeState extends State<Home> {
       body: Stack(
         children: [
           Container(
-            color: Colors.white,
+            color: Colors.white
           ),
           Center(
             child: Column(
@@ -116,7 +116,8 @@ class _HomeState extends State<Home> {
                         child: Text('Clear Pad',
                         style: TextStyle(color: Colors.white,
                         fontWeight: FontWeight.w500,
-                        fontSize: 14)),
+                        fontSize: 14,
+                        letterSpacing: 2.0)),
                         elevation: 15.0,
                         controller: _btnController,
                         color: Colors.deepPurpleAccent,
