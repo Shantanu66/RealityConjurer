@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:reality_conjurer/home.dart';
 import 'package:splashscreen/splashscreen.dart';
 
 final Shader linearGradient = LinearGradient(
@@ -22,7 +23,7 @@ class _MySplashState extends State<MySplash> {
   Widget build(BuildContext context) {
     return SplashScreen(
       seconds: 2,
-      //navigateAfterSeconds: ,
+      navigateAfterSeconds: Home(),
       title: Text(
         'REALITY CONJURER',
         style: TextStyle(
@@ -41,13 +42,14 @@ class _MySplashState extends State<MySplash> {
         
       ),
       gradientBackground: LinearGradient(
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
         colors: [
-          Color(0xFF90CAF9),
-          Color(0xFF1E88E5),
-          Color(0xFF1976D2),
-          Color(0xFF1565C0),
+          Color(0xFFF48FB1),
+          Color(0xFFF06292),
+          Color(0xFFEC407A),
+          Color(0xFFE91E63),
+          Color(0xFFD81B60),
         ],
       ),
       loaderColor: Colors.white,
