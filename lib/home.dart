@@ -123,6 +123,7 @@ class _HomeState extends State<Home> {
                         color: Colors.deepPurpleAccent,
                         onPressed: _doSomething,
                         width: 200,
+                        borderRadius: 100,
                       ),
                     ],
                   ),
