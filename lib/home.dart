@@ -3,6 +3,8 @@ import 'dart:ffi';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 import 'package:flutter/material.dart';
 import 'package:reality_conjurer/drawing_area.dart';
+import 'package:http/http.dart';
+
 
 class Home extends StatefulWidget {
   @override
@@ -11,6 +13,17 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   List<DrawingArea?> points = [];
+
+  void fetchResponse(var base64Image) async{
+    var data={"Image":base64Image}
+    var url='http://'
+  }
+
+
+
+
+
+
   void _doSomething() async {
     Timer(Duration(milliseconds: 100), () {
       this.setState(() {
@@ -65,7 +78,7 @@ class _HomeState extends State<Home> {
                                 areaPaint: Paint()
                                   ..strokeCap = StrokeCap.round
                                   ..isAntiAlias = true
-                                  ..color = Colors.black
+                                  ..color = Colors.white
                                   ..strokeWidth = 2.0));
                           },
                         );
@@ -79,7 +92,7 @@ class _HomeState extends State<Home> {
                                 areaPaint: Paint()
                                   ..strokeCap = StrokeCap.round
                                   ..isAntiAlias = true
-                                  ..color = Colors.black
+                                  ..color = Colors.white
                                   ..strokeWidth = 2.0));
                           },
                         );

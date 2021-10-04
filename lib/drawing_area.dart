@@ -17,7 +17,7 @@ class MyCustomPainter extends CustomPainter{
   
   @override
   void paint(Canvas canvas,Size size){
-     Paint background=Paint()..color=Colors.pinkAccent;
+     Paint background=Paint()..color=Colors.black;
      Rect rect=Rect.fromLTWH(0, 0, size.width, size.height);
      canvas.drawRect(rect, background);
      canvas.clipRect(rect);
