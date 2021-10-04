@@ -122,7 +122,7 @@ class _HomeState extends State<Home> {
                         controller: _btnController,
                         color: Colors.deepPurpleAccent,
                         onPressed: _doSomething,
-                        width: 20,
+                        width: 200,
                         borderRadius: 100,
                       ),
                     ],
