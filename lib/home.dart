@@ -5,7 +5,7 @@ import 'dart:ffi';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 import 'package:flutter/material.dart';
 import 'package:reality_conjurer/drawing_area.dart';
-import 'package:http/http.dart';
+import 'package:http/http.dart' as http;
 
 
 class Home extends StatefulWidget {
@@ -20,7 +20,7 @@ class _HomeState extends State<Home> {
   void fetchResponse(var base64Image) async{
     var data={"Image":base64Image};
     //get around this will be connecting to our home IP Address
-    var url='http://192.168.1.3:5000/predict';
+    var url=Uri.parse('http://192.168.1.3:5000/predict');
     Map<String,String> headers={
       'Content-type':'application/json',
       'Accept':'application/json',
