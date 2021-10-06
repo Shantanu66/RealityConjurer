@@ -2,6 +2,8 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
 import 'dart:ffi';
+import 'dart:typed_data';
+import 'dart:ui'as ui;
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 import 'package:flutter/material.dart';
 import 'package:reality_conjurer/drawing_area.dart';
@@ -44,13 +46,42 @@ class _HomeState extends State<Home> {
     }
   }
 
+  //save the image the user drew
+  void saveToImage(List<DrawingArea?> points) async{
+    final recorder=ui.PictureRecorder();
+    final canvas=Canvas(recorder,Rect.fromPoints(Offset(0,0),
+    Offset(200,200) ));
+    Paint paint=Paint()..color=Colors.white..strokeCap=
+    StrokeCap.round..strokeWidth=2.0;
+    final paint2=Paint()..style=PaintingStyle.fill
+    ..color=Colors.black;
+    canvas.drawRect(Rect.fromLTWH(0, 0, 256, 256), paint2);
+    for(int i=0;i<points.length-1;i++){
+      if(points[i]!=null && points[i+1]!=null){
+         canvas.drawLine(points[i]!.point, points[i+1]!.point, 
+         paint);
+    }
+    final picture=recorder.endRecording();
+    final img = await picture.toImage(256, 256);
+    final pngBytes=await img.toByteData(
+      format: ui.ImageByteFormat.png
+    );
+    final listBytes=Uint8List.view(
+      pngBytes!.buffer
+    );
+    //File file=await writeBytes(listBytes);
+    String base64=base64Encode(
+      listBytes
+    );
+    fetchResponse(base64);
+  }
 
-
-
-
-
+  
+  final RoundedLoadingButtonController _btnController =
+      new RoundedLoadingButtonController();
   void _doSomething() async {
     Timer(Duration(milliseconds: 100), () {
+      // ignore: unnecessary_this
       this.setState(() {
         points.clear();
         _btnController.success();
@@ -58,9 +89,6 @@ class _HomeState extends State<Home> {
       });
     });
   }
-
-  final RoundedLoadingButtonController _btnController =
-      new RoundedLoadingButtonController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -172,5 +200,12 @@ class _HomeState extends State<Home> {
         ],
       ),
     );
+  }
+}
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
   }
 }
