@@ -1,7 +1,5 @@
 import 'dart:async';
-import 'dart:io';
 import 'dart:convert';
-import 'dart:ffi';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'package:rounded_loading_button/rounded_loading_button.dart';
@@ -16,13 +14,13 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   List<DrawingArea?> points = [];
-  late Widget imageOutput;
+  Widget? imageOutput;
 
   //now connecting our client app to our API
   void fetchResponse(var base64Image) async {
-    print("Starting Request");
 
     var data = {"Image": base64Image};
+    print("Starting Request");
     //get around this will be connecting to our home IP Address
     var url = Uri.parse('http://192.168.1.3:5000/predict');
     Map<String, String> headers = {
@@ -31,11 +29,17 @@ class _HomeState extends State<Home> {
       'Connection': 'Keep-Alive',
     };
     var body = json.encode(data);
+    
     try {
-      var response = await http.post(url, body: body, headers: headers);
-      final Map<String, dynamic> responseData = json.decode(response.body);
+      var response = await http.post(url, body: body, 
+      headers: headers);
+      final Map<String, dynamic> responseData = 
+      json.decode(response.body);
       String outputBytes = responseData['Image'];
-      print(outputBytes.substring(2,outputBytes.length-1));
+      print(outputBytes);
+      displayResponseImage(
+        outputBytes.substring(2, outputBytes.length - 1)
+      );
     } catch (e) {
       print('* Error has occured');
       return null;
@@ -59,24 +63,23 @@ class _HomeState extends State<Home> {
       if (points[i] != null && points[i + 1] != null) {
         canvas.drawLine(points[i]!.point, points[i + 1]!.point, paint);
       }
-      final picture = recorder.endRecording();
-      final img = await picture.toImage(256, 256);
-      final pngBytes = await img.toByteData(format: ui.ImageByteFormat.png);
-      final listBytes = Uint8List.view(pngBytes!.buffer);
-      //File file=await writeBytes(listBytes);
-      String base64 = base64Encode(listBytes);
-      fetchResponse(base64);
     }
+    final picture = recorder.endRecording();
+    final img = await picture.toImage(256, 256);
+    final pngBytes = await img.toByteData(format: ui.ImageByteFormat.png);
+    final listBytes = Uint8List.view(pngBytes!.buffer);
+    //File file=await writeBytes(listBytes);
+    String base64 = base64Encode(listBytes);
+    fetchResponse(base64);
   }
 
-  void displayResponseImage(String bytes) async{
-    Uint8List convertedBytes=base64Decode(bytes);
+  void displayResponseImage(String bytes) async {
+    Uint8List convertedBytes = base64Decode(bytes);
     setState(() {
-      imageOutput=Container(
+      imageOutput = Container(
         width: 256,
         height: 256,
-        child: Image.memory(convertedBytes,
-        fit:BoxFit.cover),
+        child: Image.memory(convertedBytes, fit: BoxFit.cover),
       );
     });
   }
@@ -199,6 +202,18 @@ class _HomeState extends State<Home> {
                     ],
                   ),
                 ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10.0),
+                  child: Container(
+                    child: Center(
+                      child: Container(
+                        height: 256,
+                        width: 256,
+                        child: imageOutput,
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           )
@@ -206,4 +221,5 @@ class _HomeState extends State<Home> {
       ),
     );
   }
+  
 }
