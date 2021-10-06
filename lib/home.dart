@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'dart:io';
+import 'dart:convert';
 import 'dart:ffi';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 import 'package:flutter/material.dart';
@@ -14,9 +16,32 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   List<DrawingArea?> points = [];
 
+  //now connecting our client app to our API
   void fetchResponse(var base64Image) async{
-    var data={"Image":base64Image}
-    var url='http://'
+    var data={"Image":base64Image};
+    //get around this will be connecting to our home IP Address
+    var url='http://192.168.1.3:5000/predict';
+    Map<String,String> headers={
+      'Content-type':'application/json',
+      'Accept':'application/json',
+      'Connection':'Keep-Alive',
+    };
+    var body=json.encode(data);
+    try{
+      var response=await http.post(
+        url,
+        body:body,
+        headers:headers
+        );
+        final Map<String,dynamic> responseData=json.decode(
+          response.body
+        );
+        String outputBytes=responseData['Image'];
+
+    } catch(e){
+      print('* Error has occured');
+      return null;
+    }
   }
 
 
