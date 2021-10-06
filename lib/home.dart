@@ -93,6 +93,7 @@ class _HomeState extends State<Home> {
         points.clear();
         _btnController.success();
         _btnController.reset();
+        imageOutput=null;
       });
     });
   }
