@@ -16,7 +16,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   List<DrawingArea?> points = [];
-  Widget imageOutput;
+  late Widget imageOutput;
 
   //now connecting our client app to our API
   void fetchResponse(var base64Image) async {
@@ -70,7 +70,15 @@ class _HomeState extends State<Home> {
   }
 
   void displayResponseImage(String bytes) async{
-    
+    Uint8List convertedBytes=base64Decode(bytes);
+    setState(() {
+      imageOutput=Container(
+        width: 256,
+        height: 256,
+        child: Image.memory(convertedBytes,
+        fit:BoxFit.cover),
+      );
+    });
   }
 
   final RoundedLoadingButtonController _btnController =
