@@ -8,7 +8,7 @@ drawn by the user.
 It has a built in sketch pad interface and a easy to use UI.
 It basically uses a GAN nueral network/model called pix2pix algorithm.Pix2Pix algorithm
 basically generates a mapping of one image to another using a refernce image
-It basicaaly trains the model to generate the image using the refernce image.
+It basically trains the model to generate the image using the refernce image.
 to give the final output image of the given sketch
 We basically created a combined image of size(256x256)/standard size
 in which the left half is a sketch and the right half is the the image output that we want/or
