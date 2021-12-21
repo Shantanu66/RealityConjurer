@@ -22,6 +22,13 @@ then to create the functionality of the app we need a backend/server/API to pass
 flutter client to our server so that our server can predict the sketch based on our download model
 and then send it back to the client for display.
 
+# How To Run This Project
+
+    Clone the repository.
+    cd card_accumulator
+    Do flutter pub get.
+
+
 # Steps to Download:
 Clone this Repo in your system
 and also clone the FLASK_API for reality generator repo for the server part
