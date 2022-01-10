@@ -27,7 +27,7 @@ and then send it back to the client for display.
     Clone the repository.
     cd card_accumulator
     Do flutter pub get.
-
+# Preview 
 
 # Steps to Download:
 Clone this Repo in your system
