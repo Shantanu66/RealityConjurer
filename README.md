@@ -1,5 +1,4 @@
 # Reality Conjurer
-A new Flutter project.
 
 # Description:
 A cross platform application for mobile devices built using Flutter framework
