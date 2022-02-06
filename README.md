@@ -24,6 +24,7 @@ and then send it back to the client for display.
 # How To Run This Project
 
     Clone the repository.
+    Clone the server repo too
     cd card_accumulator
     Do flutter pub get.
 # Preview 
