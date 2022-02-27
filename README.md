@@ -1,6 +1,4 @@
 # Reality Conjurer
-
-# Description:
 A cross platform application for mobile devices built using Flutter framework
 which conjures the real-life or reality images corresponding to the sketches
 drawn by the user.
