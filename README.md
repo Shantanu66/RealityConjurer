@@ -26,8 +26,9 @@ and then send it back to the client for display.
     cd card_accumulator
     Do flutter pub get.
 # Preview 
+To be Added
 # Video Demo
-
+To be Added
 # Steps to Download:
 Clone this Repo in your system
 and also clone the FLASK_API for reality generator repo for the server part
