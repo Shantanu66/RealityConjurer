@@ -34,7 +34,7 @@ Clone this Repo in your system
 and also clone the FLASK_API for reality generator repo for the server part
 Now first run the server(steps provided)
 then the client.
-PS:-Full build will be availabe soon
+PS:-Full build will be availabe soon(APK)
 
 ## Getting Started
 
