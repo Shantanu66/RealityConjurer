@@ -17,7 +17,7 @@ We now download the fully trained model for our use.
 We then create the client part of our app in Flutter 
 then to create the functionality of the app we need a backend/server/API to pass our sketch from the 
 flutter client to our server so that our server can predict the sketch based on our download model
-and then send it back to the client for display.
+and then send it back to the client for displaying in the app.
 
 # How To Run This Project
 
