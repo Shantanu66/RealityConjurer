@@ -2,6 +2,7 @@
 Cross platform application for mobile devices built using Flutter framework
 which conjures the real-life or reality images corresponding to the sketches
 drawn by the user.
+# High Level Overview
 It has a built in sketch pad interface and a easy to use UI.
 It basically uses a GAN nueral network/model called pix2pix algorithm.Pix2Pix algorithm
 basically generates a mapping of one image to another using a refernce image
